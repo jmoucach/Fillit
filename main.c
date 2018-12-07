@@ -6,12 +6,16 @@
 /*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:33:50 by jmoucach          #+#    #+#             */
-/*   Updated: 2018/12/06 17:16:32 by jmoucach         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:23:09 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdlib.h>
+#include <stdio.h>
+char **piece_placer(char *str, char **map, int map_size);
+int     is_placable(char **map, int map_size, char *pattern, char *pos);
+int     place_piece(char ***map, char *pattern, char *pos);
 int     ft_sqrt(int nb)
 {
 	int a;
@@ -27,18 +31,18 @@ int     ft_sqrt(int nb)
 }
 
 /*int		ft_link_count(t_triminoes *lst)
-{
-	int i;
+  {
+  int i;
 
-	i = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
-*/
+  i = 0;
+  while (lst)
+  {
+  lst = lst->next;
+  i++;
+  }
+  return (i);
+  }
+  */
 char	**ft_map_maker(int map_size)
 {
 	char		**map;
@@ -75,7 +79,7 @@ void	ft_print_map(char **map, int map_size)
 {
 	int i;
 	int j;
-	
+
 	j = 0;
 	while (j < map_size)
 	{
@@ -94,22 +98,34 @@ void	ft_print_map(char **map, int map_size)
 int		main(int ac, char **av)
 {
 	int 		map_size;
-//	t_triminoes	*piece;
+	//	t_triminoes	*piece;
 	char		**map;
+	char *str;
+	char *str2;
+	char *str3;
+	char *str4;
 
+	str4 = "DD..DD";
+	str2 = "BB..BB";
+	str3 = "CC..CC";
+	str = "AA..AA";
 	(void)ac;
 
 	if (ac == 2)
 	{
 		map_size = ft_sqrt(atoi(av[1]) * 4);
 		map = ft_map_maker(map_size);
-		while (backtrack(map_size, map, piece))
+	/*	while (backtrack(map_size, map, piece))
 		{
-			free(map);
+			ft_free_map(map);
 			map_size++;
 			map = ft_map_maker(map_size);
 		}
-		map[1][4] = 'a';
+		map[1][4] = 'a';*/
+		map = piece_placer(str, map, map_size);
+		map = piece_placer(str2, map, map_size);
+		map = piece_placer(str3, map, map_size);
+		map = piece_placer(str4, map, map_size);
 		ft_print_map(map, map_size);
 	}
 	else
