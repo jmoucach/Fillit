@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_countdigits.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 10:30:38 by fgaribot          #+#    #+#             */
-/*   Updated: 2018/11/12 15:08:21 by fgaribot         ###   ########.fr       */
+/*   Created: 2018/11/13 14:02:04 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/11/14 18:53:19 by fgaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
+int		ft_countdigits(int n)
 {
-	int		sign;
-	int		nb;
-	int		i;
+	int		count;
 
-	i = 0;
-	nb = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
-			|| str[i] == '\r' || str[i] == ' ')
-		i++;
-	sign = str[i] == '-' ? -1 : 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	count = 0;
+	if (n == 0)
+		count = 1;
+	while (n != 0)
 	{
-		nb = nb * 10 + (str[i] - '0');
-		i++;
+		n = n / 10;
+		count++;
 	}
-	return (nb * sign);
+	return (count);
 }

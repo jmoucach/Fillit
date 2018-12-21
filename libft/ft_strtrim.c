@@ -3,38 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 21:50:13 by jmoucach          #+#    #+#             */
-/*   Updated: 2018/11/14 17:24:00 by jmoucach         ###   ########.fr       */
+/*   Created: 2018/11/13 08:06:26 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/11/14 18:59:03 by fgaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strtrim(const char *s)
+char	*ft_strtrim(char const *s)
 {
 	char	*str;
 	int		i;
 	int		j;
+	int		a;
 
-	i = -1;
 	if (!s)
 		return (NULL);
-	j = ft_strlen(s) - 1;
-	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
+	a = 0;
+	i = 0;
+	j = 0;
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+		i++;
+	while (s[j])
+		j++;
+	j = j - 1;
+	while ((s[j] == ' ' || s[j] == '\n' || s[j] == '\t') && j > i)
 		j--;
-	while (s[++i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		j--;
-	if (j < 1)
-		return (ft_strnew(1));
-	if (!(str = (char *)malloc(sizeof(*s) * (j + 2))))
+	if (!(str = (char *)malloc(sizeof(*str) * (j - i + 2))))
 		return (NULL);
-	s = s + i;
-	i = -1;
-	while (++i <= j)
-		str[i] = s[i];
-	str[i] = '\0';
+	while (i <= j)
+		str[a++] = s[i++];
+	str[a] = '\0';
 	return (str);
 }

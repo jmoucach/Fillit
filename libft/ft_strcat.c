@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 10:44:09 by jmoucach          #+#    #+#             */
-/*   Updated: 2018/11/08 18:31:54 by jmoucach         ###   ########.fr       */
+/*   Created: 2018/11/08 13:21:26 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/11/08 14:23:46 by fgaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcat(char *s1, const char *s2)
 {
-	int	i;
-	int j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

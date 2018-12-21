@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_replace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 10:30:38 by fgaribot          #+#    #+#             */
-/*   Updated: 2018/11/12 15:08:21 by fgaribot         ###   ########.fr       */
+/*   Created: 2018/12/12 12:49:30 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/12/14 11:50:11 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
-{
-	int		sign;
-	int		nb;
-	int		i;
+#include "libft.h"
 
-	i = 0;
-	nb = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
-			|| str[i] == '\r' || str[i] == ' ')
-		i++;
-	sign = str[i] == '-' ? -1 : 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+char	*ft_replace(char *str, char find, char replace)
+{
+	char	*current_pos;
+
+	if (!str)
+		return (NULL);
+	current_pos = ft_strchr(str, find);
+	while (current_pos)
 	{
-		nb = nb * 10 + (str[i] - '0');
-		i++;
+		*current_pos = replace;
+		current_pos = ft_strchr(current_pos + 1, find);
 	}
-	return (nb * sign);
+	return (str);
 }

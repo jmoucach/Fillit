@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   valid.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 10:30:38 by fgaribot          #+#    #+#             */
-/*   Updated: 2018/11/12 15:08:21 by fgaribot         ###   ########.fr       */
+/*   Created: 2018/12/06 09:13:45 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/12/14 11:49:39 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
-{
-	int		sign;
-	int		nb;
-	int		i;
+#ifndef VALID_H
+# define VALID_H
 
-	i = 0;
-	nb = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
-			|| str[i] == '\r' || str[i] == ' ')
-		i++;
-	sign = str[i] == '-' ? -1 : 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - '0');
-		i++;
-	}
-	return (nb * sign);
-}
+typedef struct s_trimino	t_trimino;
+
+struct						s_trimino
+{
+	char					*pattern;
+	t_trimino				*next;
+};
+
+t_trimino					*tritreminoes(char *av);
+
+#endif

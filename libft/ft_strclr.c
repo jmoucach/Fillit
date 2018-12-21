@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 14:40:30 by jmoucach          #+#    #+#             */
-/*   Updated: 2018/11/12 19:01:16 by jmoucach         ###   ########.fr       */
+/*   Created: 2018/11/12 19:31:35 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/11/14 18:04:28 by fgaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	ft_strclr(char *s)
 {
-	int		i;
-
-	i = 0;
-	if (s)
+	if (s && *s)
 	{
-		while (s[i])
-		{
-			s[i] = '\0';
-			i++;
-		}
+		ft_memset(s, '\0', ft_strlen(s));
 	}
 }

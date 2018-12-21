@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 17:16:53 by jmoucach          #+#    #+#             */
-/*   Updated: 2018/11/09 13:58:53 by jmoucach         ###   ########.fr       */
+/*   Created: 2018/11/08 16:30:40 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/12/12 14:27:29 by fgaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <string.h>
 
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s && *s != (char)c)
 		s++;
-	if (*s == (char)c)
-		return ((char *)s);
-	return (NULL);
+	if (*s == c)
+		return (char *)s;
+	return (0);
 }

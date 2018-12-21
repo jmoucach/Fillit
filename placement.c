@@ -6,7 +6,7 @@
 /*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 13:45:20 by jmoucach          #+#    #+#             */
-/*   Updated: 2018/12/12 13:29:32 by jmoucach         ###   ########.fr       */
+/*   Updated: 2018/12/13 20:49:44 by jmoucach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,24 @@ void	place_piece(char ***map, char *pattern, t_coord pos)
 	}
 }
 
+void	remove_piece(char ***map, char *pattern, t_coord pos)
+{
+	int		i;
+
+	i = 0;
+	while (pattern[i])
+	{
+		if (pattern[i] != '.')
+		{
+			pos.x = pos.x_ref + i % 4;
+			pos.y = pos.y_ref + i / 4;
+			pos = case_check(&pattern, &i, pos);
+			(*map)[pos.x][pos.y] = '.';
+		}
+		i++;
+	}
+}
+
 int		is_placable(char **map, int map_size, char *pattern, t_coord pos)
 {
 	int		i;
@@ -69,27 +87,4 @@ int		is_placable(char **map, int map_size, char *pattern, t_coord pos)
 		i++;
 	}
 	return (1);
-}
-
-char	**piece_placer(char *str, char **map, int map_size)
-{
-	t_coord	pos;
-	int		ret;
-
-	pos.y_ref = -1;
-	while (++(pos.y_ref) < map_size)
-	{
-		pos.x_ref = -1;
-		while (++(pos.x_ref) < map_size)
-		{
-			if ((ret = is_placable(map, map_size, str, pos)) == 1)
-			{
-				place_piece(&map, str, pos);
-				break ;
-			}
-		}
-		if (ret == 1)
-			break ;
-	}
-	return (map);
 }

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_countsplit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 10:30:38 by fgaribot          #+#    #+#             */
-/*   Updated: 2018/11/12 15:08:21 by fgaribot         ###   ########.fr       */
+/*   Created: 2018/11/13 09:16:07 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/11/15 09:53:20 by fgaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
+int		ft_countsplit(char const *s, char c)
 {
-	int		sign;
-	int		nb;
-	int		i;
+	int	i;
+	int	n;
 
 	i = 0;
-	nb = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
-			|| str[i] == '\r' || str[i] == ' ')
-		i++;
-	sign = str[i] == '-' ? -1 : 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	n = 0;
+	if (!s)
+		return (0);
+	while (s[i])
 	{
-		nb = nb * 10 + (str[i] - '0');
-		i++;
+		while (s[i] == c)
+			i++;
+		if (s[i] != c && s[i] != '\0')
+			n++;
+		while (s[i] != c && s[i] != '\0')
+			i++;
 	}
-	return (nb * sign);
+	return (n);
 }

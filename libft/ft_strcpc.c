@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strcpc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 10:30:38 by fgaribot          #+#    #+#             */
-/*   Updated: 2018/11/12 15:08:21 by fgaribot         ###   ########.fr       */
+/*   Created: 2018/11/13 10:09:24 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/12/07 14:24:22 by fgaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
+#include <string.h>
+
+char	*ft_strcpc(char *dest, char *src, char c)
 {
-	int		sign;
-	int		nb;
 	int		i;
 
 	i = 0;
-	nb = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
-			|| str[i] == '\r' || str[i] == ' ')
-		i++;
-	sign = str[i] == '-' ? -1 : 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	if (!dest || !src)
+		return (NULL);
+	while (src[i] && src[i] != c)
 	{
-		nb = nb * 10 + (str[i] - '0');
+		dest[i] = src[i];
 		i++;
 	}
-	return (nb * sign);
+	dest[i] = '\0';
+	return (dest);
 }

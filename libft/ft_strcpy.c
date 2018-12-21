@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fgaribot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 09:19:05 by jmoucach          #+#    #+#             */
-/*   Updated: 2018/11/08 09:39:49 by jmoucach         ###   ########.fr       */
+/*   Created: 2018/11/06 18:57:51 by fgaribot          #+#    #+#             */
+/*   Updated: 2018/11/07 16:17:03 by fgaribot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (src[i])
